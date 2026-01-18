@@ -22,7 +22,7 @@ canvas.pack()
 Stored_Img = Image.new("L",(400,400),"white")
 Made_Img = ImageDraw.Draw(Stored_Img) #Fixed, initialise image first
 
-canvas.current_colour = colours[0]
+canvas.current_colour = "black"
 canvas.last_x = 0
 canvas.last_y = 0
 
@@ -34,12 +34,13 @@ def draw(event):
     canvas.create_line(
         canvas.last_x, canvas.last_y,
         event.x, event.y,
-        fill=canvas.current_colour,
+        fill="black",
         width=8,
     )
-    Made_Img.line([canvas.last_x,canvas.last_y,event.x,event.y], fill=255, width=8)
+    Made_Img.line([canvas.last_x,canvas.last_y,event.x+1,event.y+1], fill="black", width=8)
     canvas.last_x = event.x
     canvas.last_y = event.y
+
 
 def set_red():
     canvas.current_colour = colours[0]
