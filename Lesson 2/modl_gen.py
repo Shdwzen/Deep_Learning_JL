@@ -2,17 +2,11 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.datasets import mnist
 
-# -------------------------------
-# Load and prepare data
-# -------------------------------
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 x_train = x_train / 255.0
 x_test = x_test / 255.0
 
-# -------------------------------
-# Model builder
-# -------------------------------
 def build_model(activation):
     model = models.Sequential([
         layers.Flatten(input_shape=(28, 28)),
@@ -29,15 +23,13 @@ def build_model(activation):
 
     return model
 
-# -------------------------------
-# Train and save models
-# -------------------------------
+
 Activations = ["relu", "sigmoid", "tanh"]
 
-for act in Activations:
-    print(f"\nTraining model with activation: {act}")
+for a in Activations:
+    print(f"\nTraining model with activation: {a}")
 
-    Mdl = build_model(act)
+    Mdl = build_model(a)
     Mdl.fit(
         x_train,
         y_train,
@@ -46,7 +38,7 @@ for act in Activations:
         verbose=1
     )
 
-    Save_Path = f"Lesson 2/l2_mdl_{act}.h5"
+    Save_Path = f"Lesson 2/l2_mdl_{a}.h5"
     Mdl.save(Save_Path)
 
     print(f"Saved: {Save_Path}")

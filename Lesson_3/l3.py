@@ -57,8 +57,6 @@ def predict():
     ImgArray = np.expand_dims(ImgArray, axis=0)
     Output = Mdl.predict(ImgArray)
     print(np.argmax(Output))
-    
-
 
 canvas.bind("<Button-1>", start_draw)
 canvas.bind("<B1-Motion>", draw)
